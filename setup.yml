@@ -1,0 +1,11 @@
+- hosts: dbservers
+  remote_user: root
+  vars:
+    postgresql_version: 9.5
+    postgresql_conf:
+      listen_addresses: "''"    # disable network listening (listen on unix socket only)
+      max_connections: 50       # decrease connection limit
+    postgresql_pg_hba_conf:
+      - host all all 10.0.0.0/8 md5
+  roles:
+    - postgresql
