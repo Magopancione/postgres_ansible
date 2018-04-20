@@ -1,4 +1,5 @@
 ---
 
 - name: Reload PostgreSQL
+  become: yes
   service: name={{ postgresql_service_name }} state=reloaded
